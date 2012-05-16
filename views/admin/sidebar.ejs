@@ -1,0 +1,44 @@
+<div style="padding: 8px 0;" class="well">
+        <ul class="nav nav-list">
+        <li class="nav-header">Categories</li> 
+        
+        <% for(var index in categories){ %>
+          <li ><a href="/blog/cat/<%= categories[index].id %>"><%= categories[index].cat_name%></a></li>
+        <% } %>        
+        </ul>
+</div>
+<div style="padding: 8px 0;" class="well">
+        <ul class="nav nav-list">
+          <li class="nav-header">Recent Posts</li>       
+           <% for(var index in recentposts){ %>
+          <li ><a href="/blog/post/<%= recentposts[index].id %>"><%= recentposts[index].title%></a></li>
+        	 <% } %>  
+        </ul>
+</div>
+<div style="padding: 8px 0;" class="well">
+        <ul class="nav nav-list">
+          <li class="nav-header">Recent Comments</li>
+          <% for(var index in recentcomments){ %>
+          <li ><%= recentcomments[index].comment.substr(0,50)%></li>
+        	 <% } %>  
+        </ul>
+</div>
+<div style="padding: 8px 0;" class="well">
+        <ul class="nav nav-list">
+          <li class="nav-header">Archives</li>
+          <li><a href="#">May</a></li>
+          <li><a href="#">April</a></li>
+          <li><a href="#">March</a></li>
+          <li><a href="#">Feb</a></li>
+          <li><a href="#">Jan</a></li>
+        </ul>
+</div>
+<div style="padding: 8px 0;" class="well">
+        <ul class="nav nav-list">
+          <li class="nav-header">Meta</li>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+</div>

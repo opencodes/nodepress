@@ -1,0 +1,14 @@
+{
+  "name": "nodepress",
+  "subdomain": "nodepress",
+  "scripts": {
+    "start": "app.js"
+  },
+  "version": "0.0.0-2",
+  "engines": {
+    "node": "0.6.x"
+  },
+  "dependencies": {
+    "express": "2.x"
+  }
+}

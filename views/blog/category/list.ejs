@@ -1,0 +1,5 @@
+  <h1>Categories </h1>
+  <hr>
+	<% for(var index in blogcat) { %>
+  	<h3><a href="/blog/cat/<%= blogcat[index].id%>"><%= blogcat[index].cat_name%></a></h3><small><b><%= dateFormat(blogcat[index].created_date )%></b></small>
+	<% } %>

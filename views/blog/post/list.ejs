@@ -1,0 +1,5 @@
+	<% for(var index in blogpost) { %>
+  	<h3><a href="/blog/post/<%= blogpost[index].id%>"><%= blogpost[index].title%></a></h3><small>Posted By : <b><%= blogpost[index].nickname%></b> on <b><%= dateFormat(blogpost[index].created_date )%></b></small>
+  	<hr>
+  	<%- blogpost[index].content.substr(0,250)%>..<a  class="pull-right" href="/blog/post:<%= blogpost[index].id%>">read more</a>
+	<% } %>
