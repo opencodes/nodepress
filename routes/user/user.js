@@ -28,6 +28,10 @@ var user = {
     authenticate:function(req,res,next,username,userpass){
       res.redirect('home');
     },
+    logout:function(req,res){
+      req.session.user = null; 
+      res.redirect('home');
+    },
     render:function(req,res){
       //util.log(util.inspect(req.session.user));
       res.render('user/myaccount.ejs',{

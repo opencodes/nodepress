@@ -7,6 +7,7 @@ module.exports = function(app) {
     //Posts Routes
     app.post('/user/login', main.cats,main.recentpost,main.recentcomment,user.login);
     app.get('/user/myaccount/',main.cats,main.recentpost,main.recentcomment,user.render);
+    app.get('/user/logout/',user.logout)
 };
 /*
  * - Saving User Password
