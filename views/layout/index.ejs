@@ -26,60 +26,43 @@
     <script src="/js/jquery.validate.js"></script>
   </head>
 
-  <body data-offset="50" data-target=".subnav" data-spy="scroll" data-twttr-rendered="true">
+  <body >
 
 
   <!-- Navbar
     ================================================== -->
-    <div class="navbar navbar-fixed-top" style="height:10px;">
-      <div class="navbar-inner">
-        <div class="container">
-          <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a href="./index.html" class="brand">Bootstrap</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="">
-                <a href="./index.html">Overview</a>
-              </li>
-              <li class="active">
-                <a href="./scaffolding.html">Scaffolding</a>
-              </li>
-              <li class="">
-                <a href="./base-css.html">Base CSS</a>
-              </li>
-              <li class="">
-                <a href="./components.html">Components</a>
-              </li>
-              <li class="">
-                <a href="./javascript.html">Javascript plugins</a>
-              </li>
-              <li class="">
-                <a href="./less.html">Using LESS</a>
-              </li>
-              <li class="divider-vertical"></li>
-              <li class="">
-                <a href="./download.html">Customize</a>
-              </li>
-              <li class="">
-                <a href="./examples.html">Examples</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-
+    <%- partial('topbar') %>      
+    <div class="container ">
       <!-- Masthead
       ================================================== -->
       <header id="overview" class="jumbotron subhead">
-        <h1>Test Blog</h1>
-        <p class="lead">Just for testing.</p>
+      <!-- Carousel nav -->
+      <h1>Test Site</h1>
+				     <div id="myCarousel" class="carousel">
+				    <!-- Carousel items -->
+				
+              <div class="item">
+                <img src="/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+                <div class="carousel-caption">
+                  <h4>First Thumbnail label</h4>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+              </div>
+              <div class="item active">
+                <img src="/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
+                <div class="carousel-caption">
+                  <h4>Second Thumbnail label</h4>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+              </div>
+              <div class="item">
+                <img src="/img/bootstrap-mdo-sfmoma-03.jpg" alt="">
+                <div class="carousel-caption">
+                  <h4>Third Thumbnail label</h4>
+                  <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                </div>
+              </div>			    
+				    </div>
         <div class="subnav">
           <ul class="nav nav-pills">
             <li class="active"><a href="/">Home</a></li>
@@ -88,10 +71,10 @@
         </div>
       </header>
       <div class="row">
-    <div class="span9">
+    <div class="span7">
   		<%- body %>
   	</div>
-    <div class="span3">
+    <div class="span230">
       <%- partial('sidebar') %>     
     </div>
   </div>
@@ -104,20 +87,27 @@
 <div class="container" style="min-height: 150px;">
    <div class="row">
     <div class="span4">
-      <h3><small>About Us</small></h3>
+      <h3><small><a href="/about/">About</a></small></h3>
       <p>Bootstrap makes use of HTML elements and CSS properties that require the use of the HTML5 doctype. Be sure to include it at the beginning of every Bootstrapped page in your project.</p>
     </div><!-- /.span -->
-    <div class="span4">
-      <h3><small>Contact Info</small></h3>
+    <div class="span3">
+      <h3><small><a href="/contact/">Contact</a></small></h3>
       <p>Within the <strong>scaffolding.less</strong> file, we set basic global display, typography, and link styles. Specifically, we:</p>
             <p>Bootstrap makes use of HTML elements and CSS properties that require the use of the HTML5 doctype. Be sure to include it at the beginning of every Bootstrapped page in your project.</p>
       
     </div><!-- /.span -->
-    <div class="span4">
-      <h3><small>Contact Info</small></h3>
-      <p>Within the <strong>scaffolding.less</strong> file, we set basic global display, typography, and link styles. Specifically, we:</p>
-            <p>Bootstrap makes use of HTML elements and CSS properties that require the use of the HTML5 doctype. Be sure to include it at the beginning of every Bootstrapped page in your project.</p>
-      
+    <div class="span230">
+      <h3><small>Contact Information</small></h3>
+      <div class="textwidget"><h6>Author Name</h6>
+			<p>918 East Test Rd.<br>
+			Test, WA 99206<br>
+			USA<br>
+			<br>
+			Telephone: +0 123 456 789<br>
+			Email: <a href="mailto:email@example.com">email@example.com</a></p>
+			<div id="social">
+			</div>
+</div>
     </div><!-- /.span -->
     
   </div><!-- /.row -->

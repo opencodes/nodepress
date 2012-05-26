@@ -61,6 +61,15 @@ var main = {
         }
       });
     },
+    /*
+     * info : Login Admin System
+     */
+    login:function(req,res){
+      //util.log(util.inspect(req.blogpost));
+      res.render('login.ejs', 
+          { title: 'My Blog Page',layout : false
+            });
+    }
 };
 
 module.exports = main;

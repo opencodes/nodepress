@@ -10,6 +10,8 @@ module.exports = function (app) {
           recentcomments:req.recentcomments});
   });
   require('./blog')(app);  
+  require('./user')(app);  
+
   
 };
 

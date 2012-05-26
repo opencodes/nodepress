@@ -8,17 +8,17 @@
 <div class="row">
 	 
 	<% for(var index in comment) { %>
-	<div class="span9">
+	<div class="span7">
 	<div class="pull-left span2 comment" >
 	<img width="64px" height="64px;"alt="<%=	comment[index].name%>" src="/img/bird.png"> <br>
 	<em ><%= comment[index].name%>:</em><br><em><%=	dateFormat(comment[index].created_date )%></em>
 	</div>
-	<div class="pull-left span6 comment" ><%= comment[index].comment%></div>
+	<div class="pull-left span5 comment" ><%= comment[index].comment%></div>
 	</div>
 	<% } %>
 	</div>
 <div class="row">
-    <div class="span9">
+    <div class="span7">
       <h3>Leave a Reply</h3>
       <p>Your email address will not be published. Required fields are marked *.</p>
       <div id="comment-msg"></div>

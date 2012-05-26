@@ -171,7 +171,6 @@ a:hover {
 }
 
 .row {
-  margin-left: -20px;
   *zoom: 1;
 }
 
@@ -187,7 +186,7 @@ a:hover {
 
 [class*="span"] {
   float: left;
-  margin-left: 20px;
+  margin: 5px;
 }
 
 .container,
@@ -770,16 +769,13 @@ label {
   margin-bottom: 5px;
   color: #333333;
 }
-.error{
-    color: #ff0000;
-}
+
 input,
 textarea,
 select,
 .uneditable-input {
   display: inline-block;
   width: 210px;
-  height: 18px;
   padding: 4px;
   margin-bottom: 9px;
   font-size: 13px;
@@ -4960,9 +4956,3 @@ a.badge:hover {
 .invisible {
   visibility: hidden;
 }
-.blog-post{
-	text-align:justify;
-	}
-	.comment{
-	border-top:1px solid #EEEEEE;
-	}

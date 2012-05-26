@@ -9,8 +9,9 @@ module.exports = function (app) {
           recentposts:req.recentposts,
           recentcomments:req.recentcomments});
   });
-
-  
+  app.get('/login',main.login);
+  app.post('/login', user.login, cmw.load, cmw.validate, cmw.save, user.redirect);
+  require('./blog')(app);  
 };
 
 

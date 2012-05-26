@@ -1,0 +1,37 @@
+ <div class="navbar navbar-fixed-top" style="height:10px;">
+      <div class="navbar-inner">
+        <div class="container">
+         
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="/">Home</a>
+              </li>
+            
+              <li class="">
+                <a href="/about/">About</a>
+              </li>
+            </ul>
+          </div>
+     <% if (!session.user) { %>
+     <form class="navbar-search pull-right" action="/user/login" method="post">
+	    <input type="text" class="search-query" placeholder="Username/Email" name="username">
+	    <input type="password" class="search-query" placeholder="Password" name="userpass">
+			<button type="submit" class="btn">Login</button>    
+		</form>
+		<% } else {%>
+		<div class="btn-group pull-right">
+            <a href="#" data-toggle="dropdown" class="btn dropdown-toggle">
+              <i class="icon-user"></i> <%= session.user.email_id%>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Profile</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Sign Out</a></li>
+            </ul>
+          </div>
+		<% } %>
+        </div>
+      </div>
+    </div>

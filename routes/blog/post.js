@@ -45,7 +45,7 @@ var post = {
     render_all:function(req, res){
       var blogpost = req.blogpost;
       //util.log(util.inspect(req.blogpost));
-      res.render('blog/post/list.ejs', 
+      res.render('admin/blog/post/list.ejs', 
           { title: 'My Blog Page',
             'blogpost':blogpost,
             categories:req.cats,
