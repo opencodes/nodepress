@@ -1,0 +1,22 @@
+<h2>Register</h2>
+<hr>
+			<form class="well" action="/user/register/" method="post" id="register_form">
+        <label>First Name</label>
+        <input type="text" placeholder="" class="span3" name="first_name">
+        <label>Last Name</label>
+        <input type="text" placeholder="" class="span3" name="last_name">
+        <label>Display Name *</label>
+        <input type="text" placeholder="" class="span3 required" name="nickname">
+        <label>Email *</label>
+        <input type="text" placeholder="" class="span3 required email" name="email_id">
+        <label>Password *</label>
+        <input type="password" placeholder="" class="span3 required" name="password">
+        <label>Retype Password *</label>
+        <input type="password" placeholder="" class="span3 required equalTo password " name="retypepassword">
+       <br>
+        <button class="btn" type="submit">Register</button>
+      </form>
+      
+      
+      <script src="/js/user/register.js"></script>
+      
