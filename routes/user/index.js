@@ -7,7 +7,10 @@ module.exports = function(app) {
     //Posts Routes
     app.post('/user/login', main.cats,main.recentpost,main.recentcomment,user.login);
     app.get('/user/myaccount/',main.cats,main.recentpost,main.recentcomment,user.render);
-    app.get('/user/logout/',user.logout)
+    app.get('/user/logout/',user.logout);
+    app.get('/user/register/',main.cats,main.recentpost,main.recentcomment,user.registerform);
+    app.post('/user/register/',main.cats,main.recentpost,main.recentcomment,user.register);
+
 };
 /*
  * - Saving User Password

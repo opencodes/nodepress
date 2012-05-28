@@ -1,9 +1,0 @@
-.masthead {
-    background-color: #049c10;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#004D00), to(#049c10));
-    background-image: -moz-linear-gradient(#004D00, #049c10);
-}
-
-label {
-  width: auto;
-}

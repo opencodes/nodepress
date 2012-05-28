@@ -35,38 +35,34 @@ var User = {
        * @param 
        * 
        */
-      post_by_cat_id:function(ids,limit,callback){
-        var cat_id;
-        var post_limit = Number(limit);
-        var sub_query = '';
-          if(ids && !util.isArray(ids)){
-            if(util.isArray(ids)){
-              cat_id = ids.join();
-              sub_query = 'where '+table+'.category_id IN('+cat_id+')';
-            }
-            else{
-              sub_query = 'where '+table+'.category_id ='+ ids;
-            }
+      save:function(data,callback){
+        var subquery = 'SET ';
+        var values = [];
+        console.log(typeof(data));
+        if(data && typeof(data) ==  "object"){
+          for(var index in data){
+            if(index!='id')
+            values.push(index +"='"+data[index]+"' ");
           }
-          var sql = 'SELECT '+ table + '. *,user.nickname,category.cat_name  FROM '+ table; 
-              sql += ' INNER JOIN category ON '+ table + '.category_id = category.id '; 
-              sql += ' INNER JOIN user ON '+ table + '.posted_by = user.id ' + sub_query + ' ORDER BY '+ table + '.created_date';
-          if(post_limit){
-            sql += " LIMIT "+post_limit;
-          }
-          //util.log('Query:'+sql);
-          Db.query(
-              sql,
-              function selectCb(err, results) {
-                if (!err) {
-                  return callback(results, null); 
-                }
-                else{
-                  return callback(null, err); 
-                }            
-               }
-           ); 
-          }
+          subquery += values.join(',')
+          if(data.id && data.id!=''){
+            subquery+=" where id='"+Number(data.id)+"'";
+          }          
+        }        
+        var sql = 'INSERT INTO '+ table +' '+ subquery;
+        //console.log("Query:"+sql);
+        Db.query(
+            sql,
+            function selectCb(err, results) {
+              if (!err) {
+                return callback(results, null); 
+              }
+              else{
+                return callback(null, err); 
+              }            
+             }
+         ); 
+      }
       
    
 };

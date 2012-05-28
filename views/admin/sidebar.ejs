@@ -1,28 +1,4 @@
-<div style="padding: 8px 0;" class="well">
-        <ul class="nav nav-list">
-        <li class="nav-header">Categories</li> 
-        
-        <% for(var index in categories){ %>
-          <li ><a href="/blog/cat/<%= categories[index].id %>"><%= categories[index].cat_name%></a></li>
-        <% } %>        
-        </ul>
-</div>
-<div style="padding: 8px 0;" class="well">
-        <ul class="nav nav-list">
-          <li class="nav-header">Recent Posts</li>       
-           <% for(var index in recentposts){ %>
-          <li ><a href="/blog/post/<%= recentposts[index].id %>"><%= recentposts[index].title%></a></li>
-        	 <% } %>  
-        </ul>
-</div>
-<div style="padding: 8px 0;" class="well">
-        <ul class="nav nav-list">
-          <li class="nav-header">Recent Comments</li>
-          <% for(var index in recentcomments){ %>
-          <li ><%= recentcomments[index].comment.substr(0,50)%></li>
-        	 <% } %>  
-        </ul>
-</div>
+
 <div style="padding: 8px 0;" class="well">
         <ul class="nav nav-list">
           <li class="nav-header">Archives</li>
