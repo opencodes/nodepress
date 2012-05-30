@@ -1,144 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-<title>UrbanTouch Management Console</title>
-<meta name="description" content="">
-<meta name="author" content="UrbanTouch" >
- <style type="text/css">
-      body {
-        padding-top:10px;
-        padding-bottom: 10px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-    </style>
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Le styles -->
-<link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-<link href="/css/bootstrap/bootstrap-datepicker.css" rel="stylesheet" />
-<link href="/css/bootstrap/docs.css" rel="stylesheet" />
-
-<link href="/css/TableTools.css" rel="stylesheet" />
-<link href="/css/demo_table.css" rel="stylesheet" />
-<link href="/css/stage.css" rel="stylesheet" />
-<link href="/css/common.css" rel="stylesheet" />
-
-<script src="/js/jquery-1.7.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="/js/tiny_mce/tiny_mce.js"></script>
-<script type="text/javascript" src="/js/tiny_mce/jquery.tinymce.js"></script>
-<script src='/js/knockout-2.0.0.js' type='text/javascript'></script>
-<script src='/js/knockout.validation.min.js' type='text/javascript'></script>
-<link href="/js/JSTree/themes/default/style.css" rel="stylesheet" />
-
-<!-- Le fav and touch icons -->
-<link rel="shortcut icon" href="/images/favicon.ico">
-<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
-
-</head>
-<body id="bootstrap-js">
- <!-- Topbar
-    ================================================== -->
-    <div class="topbar" data-scrollspy="scrollspy" >
-      <div class="fill">
-        <div class="container">
-          <h3><a href="#">Nodepress</a></h3>
-          <ul>
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#modal">Modals</a></li>
-            <li><a href="#dropdown">Dropdown</a></li>
-            <li><a href="#scrollspy">ScrollSpy</a></li>
-            <li><a href="#buttons">Buttons</a></li>
-            <li><a href="#tabs">Tabs</a></li>
-            <li><a href="#twipsy">Twipsy</a></li>
-            <li><a href="#popover">Popover</a></li>
-            <li><a href="#alerts">Alerts</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
- <!-- Masthead (blueprinty thing)
-    ================================================== -->
-    <header class="jumbotron subhead" id="overview">
-      <div class="inner">
-        <div class="container">
-          <h1>Nodepress Admin</h1>
-          <p class="lead">
-            A simple blog opensource nodejs project.
-          </p>
-        </div><!-- /container -->
-      </div>
-    </header>
-
-
-
-
-
-
-    <div class="container">
- 
-<div class="row">
-
-    <div class="span16">
-      <form action="/login" id="login" method="post">
-
 <div  style="min-height: 40px;" id="response"></div>
-
+<form action="/login/" id="login-form" method="post">
+<h2> Admin Login</h2>
 <div id="inputs">
 	<div id="masterinput" class="clearfix">
 		<label for="xlInput">Username : </label>
 		<div class="input">
-			<input type="text"  tabindex="1" name="orderidinput" id="orderidinput" class="xlarge data-entry">
+			<input type="text"  tabindex="1" name="adminusername" id="adminusername" class="input-xlarge required email">
 		</div>
 	</div>	
 		<div id="masterinput" class="clearfix">
 		<label for="xlInput">Password : </label>
 		<div class="input">
-			<input type="text"  tabindex="1" name="orderidinput" id="orderidinput" class="xlarge data-entry">
+			<input type="password"  tabindex="1" name="adminpass" id="adminpass" class="input-xlarge required">
 		</div>
 	</div>
 	
 </div>
 <div class="actions">
 	<div class="input">
-		<button  tabindex="2" type="submit" id="generateinvoices" class="btn primary" >Login</button>
+		<button  tabindex="2" type="submit" id="generateinvoices" class="btn btn-large " >Login</button>
 	</div>
 </div>
 </form>
-    </div>
-  </div>
-  
-      <footer>
-
-    <br />
-      <p>
-        Nodepress <small>0.0.1</small>
-        &copy; Nodepress 2012, All Rights Reserved
-      </p>
-    </footer>
-
-  <script src="/js/bootstrap/bootstrap-tabs.js" type="text/javascript"></script>
-
-  <script src="/js/bootstrap/bootstrap-datepicker.js" type="text/javascript"></script>
-  <script src="/js/bootstrap/bootstrap-modal.js" type ="text/javascript"></script>
-  <script src="/js/jquery.dataTables.min.js" type="text/javascript"></script>
-  <script src="/js/jquery.dataTables.editable.js" type="text/javascript"></script>
-  <script type="text/javascript" src="/js/TableTools.min.js"></script>
-  <script type="text/javascript" src="/js/ZeroClipboard.js"></script>
-
-  <script src="/js/jquery.jeditable.mini.js" type="text/javascript"></script>
-  <script src="/js/bootstrap/bootstrap-dropdown.js" type="text/javascript"></script>   
-  <script src="/js/ejs_production.js" type="text/javascript"></script>
-  <script src="/js/common/console-utils.js" type="text/javascript"></script>
-  <script src="/js/ututils.js" type="text/javascript"></script>
-</div>
-  </body>
-
-</html>
+<script type="text/javascript">
+  $("#login-form").validate(); 
+</script>

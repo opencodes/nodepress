@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Nodepress Admin :</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="UrbanTouch" >
@@ -20,7 +20,8 @@
     </style>
     <link href="/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/css/docs.css" rel="stylesheet">
-
+    <link href="/css/jquery.dataTables_themeroller.css" rel="stylesheet">
+	
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -32,45 +33,49 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/ico/apple-touch-icon-57-precomposed.png">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery.validate.js"></script>
   </head>
 
   <body>
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
+      
         <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
+      
           <a class="brand" href="#">Nodepress</a>
+          <% if (session.adminuser) { %>
           <div class="btn-group pull-right">
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="icon-user"></i> mailid@example.com
+              <i class="icon-user"></i> <%= session.adminuser.email_id %>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li><a href="#">Profile</a></li>
               <li class="divider"></li>
-              <li><a href="#">Sign Out</a></li>
+              <li><a href="/logout/">Sign Out</a></li>
             </ul>
           </div>
+          
           <div class="nav-collapse">
+          
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">Posts</a></li>
-              <li><a href="#contact">Media</a></li>
-              <li><a href="#">Links</a></li>
-              <li><a href="#">Pages</a></li>
-              <li><a href="#">Comments</a></li>
-              <li><a href="#">Appearence</a></li>
-              <li><a href="#">Users</a></li>
-              <li><a href="#">Tools</a></li>
-              <li><a href="#">Setting</a></li>
+              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/posts/">Posts</a></li>
+              <li><a href="/media/">Media</a></li>
+              <li><a href="/links/">Links</a></li>
+              <li><a href="/pages/">Pages</a></li>
+              <li><a href="/comments/">Comments</a></li>
+              <li><a href="/users/">Users</a></li>
+              <li><a href="/tools/">Tools</a></li>
+              <li><a href="/setting/">Setting</a></li>
             </ul>
+
           </div><!--/.nav-collapse -->
+         <% } %>
         </div>
+       
       </div>
     </div>
 
@@ -88,24 +93,19 @@
           <hr>
     
 <footer>
-        <p>&copy; Company 2012</p>
+        <p>&copy; Nodepress Company 2012</p>
       </footer>
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap-transition.js"></script>
-    <script src="/js/bootstrap-alert.js"></script>
-    <script src="/js/bootstrap-modal.js"></script>
-    <script src="/js/bootstrap-dropdown.js"></script>
-    <script src="/js/bootstrap-scrollspy.js"></script>
-    <script src="/js/bootstrap-tab.js"></script>
-    <script src="/js/bootstrap-tooltip.js"></script>
-    <script src="/js/bootstrap-popover.js"></script>
-    <script src="/js/bootstrap-button.js"></script>
-    <script src="/js/bootstrap-collapse.js"></script>
-    <script src="/js/bootstrap-carousel.js"></script>
-    <script src="/js/bootstrap-typeahead.js"></script>
+    <script src="/js/bootstrap/bootstrap-alert.js"></script>
+    <script src="/js/bootstrap/bootstrap-modal.js"></script>
+    <script src="/js/bootstrap/bootstrap-dropdown.js"></script>
+    <script src="/js/bootstrap/bootstrap-tab.js"></script>
+    <script src="/js/bootstrap/bootstrap-collapse.js"></script>
+    <script src="/js/bootstrap/bootstrap-carousel.js"></script>
+    <script src="/js/jquery.dataTables.js"></script>
 
   </body>
 </html>

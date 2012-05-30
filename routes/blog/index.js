@@ -6,6 +6,7 @@ var comment  = require('./comments');
 var main = require('./../main');
 
 module.exports = function(app) {
+  
     //Posts Routes
     app.get('/blog', main.cats,main.recentpost,main.recentcomment,post.param,post.render_all);
     app.get('/blog/post/:postid', post.param,main.cats,main.recentpost,main.recentcomment,comment.bypost,post.render_view);

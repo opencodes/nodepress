@@ -4,6 +4,32 @@ var util = require('util');
 
 
 var User = {
+    isAdminUser:function(email_id,callback){
+    var sub_query = '';
+    if(email_id && !util.isArray(email_id)){
+      if(util.isArray(email_id)){
+        email_id = email_id.join();
+        sub_query = ' where '+table+'.email_id IN('+email_id+')';
+      }
+      else{
+        sub_query = ' where '+table+'.email_id ="'+ email_id+'"';
+      }
+    }
+    var sql = 'SELECT  *  FROM '+ table   + sub_query + " AND type='admin'" ; 
+  
+    util.log('Query:'+sql);
+    Db.query(
+        sql,
+        function selectCb(err, results) {
+          if (!err) {
+            return callback(results, null); 
+          }
+          else{
+            return callback(null, err); 
+          }            
+         }
+     ); 
+    },
     by_username:function(email_id,callback){
     var sub_query = '';
       if(email_id && !util.isArray(email_id)){

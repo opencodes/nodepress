@@ -4,3 +4,15 @@
   padding:5px;
   margin:2px;
 }
+#login-form{
+  background-color: #F2DEDE;
+  padding:20px;
+  margin:auto;
+  width:350px;
+  border-radius: 5px 5px 5px 5px;
+  font-size: 15px;
+  margin-bottom:150px;
+}
+.error label {
+	color:#FF0A00;
+}
