@@ -1,0 +1,38 @@
+
+<table cellpadding="0" cellspacing="0" border="0" class="display dataTable" id="datatable-post">
+	<thead>
+		<tr>
+			<th >ID</th>
+			<th >Name</th>
+			<th >Email</th>
+			<th >Website</th>
+			<th >Comment </th>
+			<th >Post Id </th>
+			<th >Posted By </th>
+			<th >Comment Date </th>
+		</tr>
+	</thead>
+	<tbody>
+		
+	</tbody>
+
+</table>
+<script type="text/javascript">
+$(document).ready(function() {
+	var oTable = $('#datatable-post').dataTable( {
+		"bProcessing": true,
+		"sAjaxSource": "/comments/all",
+		"aoColumns": [
+			{ "mDataProp": "id" },
+			{ "mDataProp": "name" },
+			{ "mDataProp": "email" },
+			{ "mDataProp": "website" },
+			{ "mDataProp": "comment" },
+			{ "mDataProp": "post_id" },
+			{ "mDataProp": "posted_by" },
+			{ "mDataProp": "comment_date" }
+		] 	
+	} );
+} );
+</script>
+

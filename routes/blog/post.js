@@ -1,5 +1,5 @@
 "use strict";
-var Blogpost = require('../../model/post'); 
+var npModelPost = require('../../model/post'); 
 var util = require('util');
 var post = {
     param: function (req, res, next) {
@@ -19,7 +19,7 @@ var post = {
      */
     info:function(req, res,next,post_id){
       var ids = post_id;
-      Blogpost.post_by_id(ids,null,function(posts,err){
+      npModelPost.post_by_id(ids,null,function(posts,err){
         if(!err){
           req.blogpost = {};
           //util.log(util.inspect(posts));
@@ -45,7 +45,7 @@ var post = {
     render_all:function(req, res){
       var blogpost = req.blogpost;
       //util.log(util.inspect(req.blogpost));
-      res.render('admin/blog/post/list.ejs', 
+      res.render('blog/post/list.ejs', 
           { title: 'My Blog Page',
             'blogpost':blogpost,
             categories:req.cats,

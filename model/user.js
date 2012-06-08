@@ -15,7 +15,7 @@ var User = {
         sub_query = ' where '+table+'.email_id ="'+ email_id+'"';
       }
     }
-    var sql = 'SELECT  *  FROM '+ table   + sub_query + " AND type='admin'" ; 
+    var sql = 'SELECT  *  FROM '+ table   + sub_query + " AND `user_type`='admin'" ; 
   
     util.log('Query:'+sql);
     Db.query(

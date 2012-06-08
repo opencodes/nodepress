@@ -1,5 +1,5 @@
 "use strict";
-var Blogpost = require('../../../model/post'); 
+var npModelPost = require('../../../model/post'); 
 var util = require('util');
 var post = {
     param: function (req, res, next) {
@@ -7,8 +7,7 @@ var post = {
       if(req.params.postid){
         req.postid = req.params.postid;  
         post_id = req.postid;
-      }
-      
+      }      
       post.info(req, res, next,post_id);
     },
     /*
@@ -19,7 +18,7 @@ var post = {
      */
     info:function(req, res,next,post_id){
       var ids = post_id;
-      Blogpost.post_by_id(ids,null,function(posts,err){
+      npModelPost.post_by_id(ids,null,function(posts,err){
         if(!err){
           req.blogpost = {};
           //util.log(util.inspect(posts));
@@ -46,11 +45,7 @@ var post = {
       var blogpost = req.blogpost;
       //util.log(util.inspect(req.blogpost));
       res.render('post/list.ejs', 
-          { title: 'My Blog Page',
-            'blogpost':blogpost,
-            categories:req.cats,
-            recentposts:req.recentposts,
-            recentcomments:req.recentcomments});
+          { title: 'My Blog Page'});
     },
     /*
      * info : Render all post.
@@ -58,16 +53,14 @@ var post = {
      * @param res
      * @param next
      */
-    render_view:function(req, res){
+    render:function(req, res){
       var blogpost = req.blogpost[req.postid];
       //util.log(util.inspect(blogpost));
       console.log('Render Post Id '+req.postid);
-      res.render('blog/post/view.ejs', 
+      res.render('post/view.ejs', 
           { title: 'My Blog Page',
-            'blogpost':blogpost,
-            categories:req.cats,
-            recentposts:req.recentposts,
-            recentcomments:req.recentcomments});
+            'blogpost':blogpost
+            });
     },
     /*
      * info : send json for datatable and other purpose
@@ -75,10 +68,9 @@ var post = {
      * @param res response
      */
     json_data:function(req,res){
-      Blogpost.post_by_id(null,null,function(posts,err){
+      npModelPost.post_by_id(null,null,function(posts,err){
         if(!err){
-          util.log(util.inspect(posts));
-
+          //util.log(util.inspect(posts));          
           var postjson = {
               "sEcho": 1,
               "iTotalRecords": "57",

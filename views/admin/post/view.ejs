@@ -1,50 +1,15 @@
-<h3><a href='/blog/post/<%= blogpost.id%>'><%= blogpost.title%></a></h3>
-<small>Posted By : <b><%= blogpost.nickname%></b> on <b><%= dateFormat(blogpost.created_date )%></b></small>
-<hr>
-<p class='blog-post'><%- blogpost.content %></p>
-      <h3>Comments</h3>
-<hr>
-<% var comment = blogpost.comment;%>
 <div class="row">
-	 
-	<% for(var index in comment) { %>
+	<div class="span3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae nibh et odio tincidunt sagittis. Integer auctor porta mauris a egestas. Sed eu ligula in nulla accumsan euismod. In vestibulum mattis nunc, sit amet mollis velit tempor ac. Ut suscipit ante nec velit auctor elementum. Quisque varius nulla metus, in aliquet ligula. Donec quis tincidunt tellus.
+
+</div>
 	<div class="span9">
-	<div class="pull-left span2 comment" >
-	<img width="64px" height="64px;"alt="<%=	comment[index].name%>" src="/img/bird.png"> <br>
-	<em ><%= comment[index].name%>:</em><br><em><%=	dateFormat(comment[index].created_date )%></em>
+	 <form class="well" method="post" id="post_comments" action="" >
+	 <input type="hidden" name='post_id' value="<%= blogpost.id%>"> 
+	 <input type="text" class="span7 required" name='email' value="<%= blogpost.title%>">
+	 <textarea type="text"  class="span7 required ckeditor" name='comment'><%- blogpost.content %></textarea>
+	 Posted On <input type="text" class="span7 required" name='email' value="<%= blogpost.created_date%>">
+	  <button type="submit" class="btn">Submit</button>
+	 </form> 
 	</div>
-	<div class="pull-left span6 comment" ><%= comment[index].comment%></div>
-	</div>
-	<% } %>
-	</div>
-<div class="row">
-    <div class="span9">
-      <h3>Leave a Reply</h3>
-      <p>Your email address will not be published. Required fields are marked *.</p>
-      <div id="comment-msg"></div>
-      <form class="well" method="post" id="post_comments" action="" >
-        <input type="hidden" name='post_id' value="<%= blogpost.id%>"> 
-        <% if(!customer) {%>
-        <label for='name'>Name *</label>
-        <input type="text"  class="span3 required" name='name'>
-        <label>Email *</label>
-        <input type="text" class="span3 required" name='email'>
-        <%} else {%>
-      	<input type="hidden" name="posted_by" value="<%= customer.id%>">
-      	<label for='name'>Name *</label>
-        <input type="text"  class="span3 required" name='name' value="<%= customer.name%>">
-        <label>Email *</label>
-        <input type="text" class="span3 required" name='email' value="<%= customer.email%>">
-        <% } %>
-        <label>Website</label>
-        <input type="text"  class="span3" name='website'>
-        <label>Comments *</label>
-        <textarea type="text"  class="span3 required" name='comment'></textarea>
-        <br>
-        <button class="btn" type="submit">Post Comments</button>
-      </form>
-  </div>
-  
-  </div>
-<script src="/js/post/post.js"></script>
+</div>
   

@@ -7,6 +7,5 @@ module.exports = function(app) {
     //Posts Routes
     app.get('/posts/',posts.param,posts.render_all);
     app.get('/posts/all',posts.json_data);
-    app.get('/posts/:postid',posts.render_view);
-    app.post('/post/',posts.save);  
+    app.get('/posts/edit/:postid',posts.param,posts.info,posts.render)
 };

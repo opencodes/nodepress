@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS `post`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `category`;
+DROP TABLE IF EXISTS `comment`;
 /* User info */
 CREATE TABLE `user` (id INT NOT NULL AUTO_INCREMENT,
 		   `email_id` VARCHAR(255),
@@ -8,10 +9,11 @@ CREATE TABLE `user` (id INT NOT NULL AUTO_INCREMENT,
 		   `first_name` VARCHAR(200),
 		   `last_name`  VARCHAR(255),
 		   `nickname` VARCHAR(255),
-  		   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		   `user_type` VARCHAR(255),
+  		 `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
                    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
-INSERT INTO `nodepress`.`user` (`id`, `email_id`, `password`, `first_name`, `last_name`, `nickname`, `created_date`) VALUES (NULL, 'admin@nodepress.com', 'admin123', 'Admin', NULL, 'admin', CURRENT_TIMESTAMP);
+INSERT INTO `nodepress`.`user` (`email_id`,`password`, `first_name`, `last_name`, `nickname`, `user_type`) VALUES ('admin@example.com','30fcfd9cdb82d8f8d7d40d434bd5adf5:lq2l', 'admin', 'admin', 'admin', 'admin');
 /*Post Category*/
 CREATE TABLE `category` (`id` INT NOT NULL AUTO_INCREMENT,
 		   `cat_name` VARCHAR(255),
