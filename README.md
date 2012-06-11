@@ -1,6 +1,6 @@
 <h1>Nodepress</h1>
 
-A Bloging application on node.js
+<small >A Bloging application on node.js<small>
 =========
 
 Node codes here.
