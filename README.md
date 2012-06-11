@@ -1,8 +1,8 @@
 <h1>Nodepress</h1>
 
-<small >A Bloging application on node.js<small>
-=========
 
+=========
+<small >A Bloging application on node.js<small>
 Node codes here.
 <h2>Licence </h2>
 
