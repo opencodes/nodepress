@@ -6,9 +6,9 @@ $(document).ready(function() {
 			var selected;
 			for(var i in res){
 				selected = '';
-				selected += (res[i].category_id)?'checked="checked"':'';
-				catlist  += '<label class="checkbox">';
-				catlist  += '<input type="checkbox" name="category[]" value="'+res[i].id+'" '+selected+'>';
+				selected += (parseInt(res[i].category_id)!==0)?'checked="checked"':'';
+				catlist  += '<label class="radio">';
+				catlist  += '<input type="radio"  id="optionsRadios1"  name="category" value="'+res[i].cat_id+'" '+selected+'>';
 				catlist	 += ''+res[i].cat_name+'</label>';
 			}
 			$('#post_category').html(catlist);

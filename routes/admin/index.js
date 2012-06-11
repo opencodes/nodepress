@@ -14,6 +14,8 @@ module.exports = function (app) {
   });
   app.post('/login/',main.login);
   require('./posts')(app);  
+  require('./category')(app);  
+
 };
 
 

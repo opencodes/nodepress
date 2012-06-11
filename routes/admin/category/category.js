@@ -93,7 +93,6 @@ var category = {
     	req.session.postid = postid;
     	npModelCat.cat_by_post_id(postid,function(err,cats){
         if(!err){
-          
           res.json(cats);
         }
         else{

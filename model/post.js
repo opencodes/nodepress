@@ -71,7 +71,48 @@ var blogpost = {
                 }            
                }
            ); 
-          }
+          },
+          save:function(data,callback){
+              var subquery = 'SET ';
+              var values = [];
+              console.log(typeof(data));
+              if(data && typeof(data) ==  "object"){
+                for(var index in data){
+                  if(index!='id')
+                  values.push(index +"='"+data[index]+"' ");
+                }
+                subquery += values.join(',')
+                if(data.id && data.id!=''){
+                  subquery+=" where id='"+Number(data.id)+"'";
+                }          
+              }        
+              var sql = 'UPDATE '+ table +' '+ subquery;
+              Db.query(
+                  sql,
+                  function selectCb(err, results) {
+                    if (!err) {
+                      return callback(null, results); 
+                    }
+                    else{
+                      return callback(err, null); 
+                    }            
+                   }
+               ); 
+            },
+            deletePost:function(id,callback){
+            	var sql = 'DELETE FROM  '+ table +' '+ ' where id="'+id+'";';
+                Db.query(
+                    sql,
+                    function selectCb(err, results) {
+                      if (!err) {
+                        return callback(null, results); 
+                      }
+                      else{
+                        return callback(err, null); 
+                      }            
+                     }
+                 ); 
+            }
       
    
 };

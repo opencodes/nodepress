@@ -1,15 +1,33 @@
-<div class="row">
-	<div class="span3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae nibh et odio tincidunt sagittis. Integer auctor porta mauris a egestas. Sed eu ligula in nulla accumsan euismod. In vestibulum mattis nunc, sit amet mollis velit tempor ac. Ut suscipit ante nec velit auctor elementum. Quisque varius nulla metus, in aliquet ligula. Donec quis tincidunt tellus.
 
+<div class="subnav">
+	<h2>Edit Post</h2>
+	<hr>
 </div>
-	<div class="span9">
-	 <form class="well" method="post" id="post_comments" action="" >
-	 <input type="hidden" name='post_id' value="<%= blogpost.id%>"> 
-	 <input type="text" class="span7 required" name='email' value="<%= blogpost.title%>">
-	 <textarea type="text"  class="span7 required ckeditor" name='comment'><%- blogpost.content %></textarea>
-	 Posted On <input type="text" class="span7 required" name='email' value="<%= blogpost.created_date%>">
-	  <button type="submit" class="btn">Submit</button>
-	 </form> 
+
+<form class="well" method="post" id="edit_post" action="/posts/save">
+	<div class="row">
+		<div class="error"></div>
+		<div class="leftdiv">
+			<h3>Category</h3>
+			<div class="controls" id="post_category">
+				
+			</div>
+			<p class="help-block">
+					<strong>Note:</strong> Select categories to bind with post.
+			</p>
+		</div>
+		<div class="span9">
+			<div class='input'>
+				<input type="hidden" name='post_id' value="<%= blogpost.id%>">
+				<input type="text " class="required largeinput" name='title' value="<%= blogpost.title%>">
+				<textarea type="text" class="span7 required ckeditor" name='content'><%- blogpost.content %></textarea>
+			</div>
+			<div class="form-actions">
+				<button class="btn btn-primary" type="submit">Save changes</button>
+			</div>
+		</div>
+
+
 	</div>
-</div>
-  
+</form>
+<script src="/js/posts/edit.js"></script>

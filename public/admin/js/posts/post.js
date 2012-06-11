@@ -16,7 +16,7 @@ $(document).ready(function() {
         return '<a href=\"/posts/edit/'+id.id +'\" ><i class="icon-edit"></i></a> | <a href=\"/posts/delete/'+id.id +'\" ><i class="icon-remove"></i></a>';} }
       
     ],
-    "bAutoWidth": false,
+    "bAutoWidth": false
     
   } );  
   $(".searchfilter input").keyup( function () {
