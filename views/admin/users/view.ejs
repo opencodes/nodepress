@@ -1,0 +1,62 @@
+
+<div class="subnav">
+	<h2>Edit User</h2>
+	<hr>
+</div>
+
+<form class="well" method="post" id="edit_post" action="/posts/add">
+	<div class="row">
+		<div class="error"></div>
+
+		<div class="span9">
+			<div class="control-group">
+            <label for="input01" class="control-label">Fistname</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge">
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="input01" class="control-label">Lastname</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge">
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="input01" class="control-label">Nickname</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge">
+              <p class="help-block">To display on your comments and post.</p>
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="input01" class="control-label">User Type</label>
+            <div class="controls">
+              <select id="select01">
+                <option value='user'>User</option>
+                <option value='admin'>Administrator</option>
+              </select>
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="input01" class="control-label">Password</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge">
+              <p class="help-block">Password should be more than 6 char.</p>
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="input01" class="control-label">Confirm</label>
+            <div class="controls">
+              <input type="text" id="input01" class="input-xlarge">
+              <p class="help-block">Retype password.</p>
+            </div>
+          </div>
+			<div class="form-actions">
+				<button class="btn btn-primary" type="submit">Save changes</button>
+			</div>
+		</div>
+
+
+	</div>
+</form>
+<script src="/js/posts/edit.js"></script>

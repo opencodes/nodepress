@@ -8,14 +8,13 @@ var main = {
      * info : Login Admin System
      */
     auth:function(req,res,next){
-      //util.log(util.inspect(req.blogpost));
-      if(!req.session.adminuser){
+      if(!req.session.adminuser && req.url!='/login/'){
         res.redirect('/login/');
       } else {
         next();
       } 
     },
-    login:function(req,res){      
+    login:function(req,res){
       if(req.body.adminusername && req.body.adminusername.trim()!=''){
         var admin_user = req.body.adminusername.trim();
         if(req.body.adminpass && req.body.adminpass.trim()!=''){

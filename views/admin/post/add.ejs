@@ -1,10 +1,10 @@
 
 <div class="subnav">
-	<h2>Edit Post</h2>
+	<h2>Add Post</h2>
 	<hr>
 </div>
 
-<form class="well" method="post" id="edit_post" action="/posts/save">
+<form class="well" method="post" id="edit_post" action="/posts/add">
 	<div class="row">
 		<div class="error"></div>
 		<div class="leftdiv">
@@ -18,9 +18,9 @@
 		</div>
 		<div class="span9">
 			<div class='input'>
-				<input type="hidden" name='post_id' value="<%= blogpost.id%>">
-				<input type="text " class="required largeinput" name='title' value="<%= blogpost.title%>">
-				<textarea type="text" class="span7 required ckeditor" name='content'><%- blogpost.content %></textarea>
+				<input type="hidden" name='post_id' value="">
+				<input type="text " class="required largeinput" name='title' value="">
+				<textarea type="text" class="span7 required ckeditor" name='content'></textarea>
 			</div>
 			<div class="form-actions">
 				<button class="btn btn-primary" type="submit">Save changes</button>

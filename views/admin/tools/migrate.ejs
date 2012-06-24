@@ -1,0 +1,25 @@
+<div class="subnav">
+    <h2>Migrate From Wordpress</h2>
+    <hr>
+</div>
+<form class="well" method="post" id="edit_post" action="/tools/migrate" enctype="multipart/form-data">
+	<div class="row">
+		<div class="error"></div>
+
+		<div class="span9">			
+          <div class="control-group">
+            <label for="input01" class="control-label">Uload XML</label>
+            <div class="controls">
+              <input type="file" id="input01" class="input-xlarge" name="wpxml">
+              <p class="help-block">Upload xml file exported from wordpress.</p>
+            </div>
+          </div>
+          
+		<div class="form-actions">
+			<button class="btn btn-primary" type="submit">Upload</button>
+		</div>
+		</div>
+
+
+	</div>
+</form>

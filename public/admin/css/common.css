@@ -17,11 +17,14 @@
 	color:#FF0A00;
 }
 .leftdiv{
-	width:150px;
+	width:250px;
 	float:left;
 }
 .rightdiv{
 	min-width:700px;
 	float:left;
 	width:100%;
+}
+.largeinput{
+	width:99%;
 }

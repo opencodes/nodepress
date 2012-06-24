@@ -1,18 +1,14 @@
 "use strict";
-var User = require('../../../model/user'); 
+var npModelUser = require('../../../model/user'); 
 var util = require('util');
-var moment = require('moment');
-var ututils = require('../../../lib/ututils');
-var datatable = require('../../../model/datatable');
-
-var user = {
+var users = {
     param: function (req, res, next) {
       var user_id = null;
       if(req.params.userid){
         req.userid = req.params.userid;  
         user_id = req.userid;
-      }      
-      user.info(req, res, next,user_id);
+      }    
+      users.info(req, res, next,user_id);
     },
     /*
      * info : Retrieve all the user.
@@ -22,15 +18,13 @@ var user = {
      */
     info:function(req, res,next,user_id){
       var ids = user_id;
-      User.user_by_id(ids,null,function(users,err){
+      npModelUser.userbyid(ids,function(err,users){
         if(!err){
           req.bloguser = {};
-          //util.log(util.inspect(users));
           for(var index in users){
             var user_id = users[index].id;            
-            req.user[user_id] = users[index];
+            req.bloguser[user_id] = users[index];
           }
-          //util.log(util.inspect(req.user));
           next();
         }
         else{
@@ -46,86 +40,120 @@ var user = {
      * @param next
      */
     render_all:function(req, res){
+      var bloguser = req.bloguser;
       //util.log(util.inspect(req.bloguser));
-      res.render('user/list.ejs', 
+      res.render('users/list.ejs', 
+          { title: 'My Blog Page'});
+    },
+    /*
+     * info : Render all user.
+     * @param req
+     * @param res
+     * @param next
+     */
+    render:function(req, res){
+      var bloguser = req.bloguser[req.userid];
+      req.session.userid=req.userid;
+      res.render('users/view.ejs', 
           { title: 'My Blog Page',
-           });
-    },
-    save:function(req,res){
-      var body =req.body;
-      //console.log(req.body);
-      var data = {id:null,
-                  name:body.name,
-                  email:body.email,
-                  website:body.website,
-                  user:body.user,
-                  post_id:body.post_id,
-                  posted_by:body.posted_by
-                  };
-      Comments.save(data,function(result,err){
-        if(!err){
-          console.log(result);
-          res.json({'msg':'Comment posted successfully;'});
-        }
-      });
-    },
-    bypost:function(req,res,next){
-      var post_id = req.postid;
-      Comments.user_by_postid(post_id,function(users,err){
-        //console.log(users);
-        if(!err){
-          req.blogpost[post_id].user = users;
-          next();
-        }
-        else{
-          console.log('Error in fetching users');
-          next();
-        }
-      });
+            'bloguser':bloguser            
+            });
     },
     /*
      * info : send json for datatable and other purpose
      * @param req request
      * @param res response
      */
-    /**
-     * Route Middleware: Fetch all sliders for datatable
-     *
-     **/
-    all: function (req, res, next) {
-      var columns = req.query.sColumns;
-      var searchColumns = ['\'abc\'', '`id`', '`email_id`', '`first_name`', '`last_name`', '`nickname`', '`type`',];
-      var sortColumns = columns.split(',');
-      var processedSql = datatable.processReqParams(req.query, searchColumns, sortColumns);
-      Slider.select(processedSql, {
-        'countRows': true,
-        'colomns': sortColumns
-      }, function (err, rows, count) {
-        req.sliders = {
-          data: rows,
-          total: count
-        };
-        next(err);
-      });
+    json_data:function(req,res){
+    	npModelUser.all(null,function(err,users){
+        if(!err){
+          //util.log(util.inspect(users));          
+          var userjson = {
+              "sEcho": 1,
+              "iTotalRecords": "57",
+              "iTotalDisplayRecords": "57",
+              "aaData": users
+            };
+          res.json(userjson);
+        }
+      });      
     },
-    /**
-     * Send back slider list to user
-     *
-     **/
-    list: function (req, res) {
-      var dataArray = datatable.format({
-        'echo': req.query.sEcho,
-        'dateFormat': 'YYYY-MM-DD h:mm:ss a'
-      }, req.sliders.total, req.sliders.data);
-      var i = 0;
-      for (i; i < dataArray.aaData.length; i++) {
-        dataArray.aaData[i][0] = '<input type="checkbox" class="sliderClass" name="sliderId[]" value="' + dataArray.aaData[i][1] + '"/>';
-      }
-
-      res.json(dataArray, {
-        layout: false
-      });
+    /*
+     * info : save user
+     * @param req request
+     * @param res response
+     */
+    save:function(req,res){
+    	var userid = (req.body.user_id)?req.body.user_id:null;
+    	var data = {
+    		category_id:req.body.category,
+    		id:userid,
+    		title:req.body.title,
+    		content:req.body.content,
+    		usered_by:req.session.adminuser.id
+    	};
+    	npModelUser.save(data,function(err,result){
+    		if(!err){
+    			console.log('user save successfully');
+    			res.redirect('/users/');
+    		}
+    	});
     },
+    /*
+     * info : delete user
+     * @param req request
+     * @param res response
+     */
+    deleteuser:function(req,res){    	
+    	var user_id = req.params.userid;
+    	if(user_id){
+    		npModelUser.deleteuser(user_id,function(err,result){
+        		if(!err){
+        			console.log('user deleted successfully');
+        			res.redirect('/users/');
+        		}
+        	});
+    	}
+    	else{
+    		res.redirect('/users/')
+    	}
+    	
+    },
+    /*
+     * info : delete user
+     * @param req request
+     * @param res response
+     */
+    add:function(req,res){
+    	res.render('user/add.ejs', 
+    	          { title: 'My Blog Page'
+    	            
+    	});
+    },
+    /*
+     * info : save user
+     * @param req request
+     * @param res response
+     */
+    adduser:function(req,res){
+    	var data = {
+    		category_id:req.body.category,
+    		title:req.body.title,
+    		content:req.body.content,
+    		usered_by:req.session.adminuser.id
+    	};
+    	util.log(data);
+    	npModeluser.adduser(data,function(err,result){
+    		if(!err){
+    			console.log('user save successfully');
+    			res.redirect('/users/');
+    		}
+    		else{console.log(err);}
+    	});
+    }
+     
+     
     
-}
-module.exports = user;
+    
+};
+module.exports = users;

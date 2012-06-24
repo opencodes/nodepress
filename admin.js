@@ -2,7 +2,7 @@ var express = require('express');
 var app     = express.createServer();
 var config = require('./config/admin');
 var util = require('util');
-
+var main = require('./routes/admin/main');
 
 app.configure(function(){
   app.use(express.static(__dirname + '/public/admin'));
@@ -12,8 +12,10 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.cookieParser());
   app.use(express.session({ secret: "asd43g84webe88d38", store: new RedisStore }));
+  
 });
 
+app.use(main.auth);
 require('./routes/admin')(app);
 console.log("Server listening on port " + config.port );
 

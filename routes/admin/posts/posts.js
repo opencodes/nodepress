@@ -55,11 +55,10 @@ var post = {
      */
     render:function(req, res){
       var blogpost = req.blogpost[req.postid];
-      //util.log(util.inspect(blogpost));
-      console.log('Render Post Id '+req.postid);
+      req.session.postid=req.postid;
       res.render('post/view.ejs', 
           { title: 'My Blog Page',
-            'blogpost':blogpost
+            'blogpost':blogpost            
             });
     },
     /*
@@ -76,15 +75,86 @@ var post = {
               "iTotalRecords": "57",
               "iTotalDisplayRecords": "57",
               "aaData": posts
-            }
+            };
           res.json(postjson);
         }
-      });
-      
-
-      
-      
+      });      
+    },
+    /*
+     * info : save post
+     * @param req request
+     * @param res response
+     */
+    save:function(req,res){
+    	var postid = (req.body.post_id)?req.body.post_id:null;
+    	var data = {
+    		category_id:req.body.category,
+    		id:postid,
+    		title:req.body.title,
+    		content:req.body.content,
+    		posted_by:req.session.adminuser.id
+    	};
+    	npModelPost.save(data,function(err,result){
+    		if(!err){
+    			console.log('Post save successfully');
+    			res.redirect('/posts/');
+    		}
+    	});
+    },
+    /*
+     * info : delete post
+     * @param req request
+     * @param res response
+     */
+    deletepost:function(req,res){    	
+    	var post_id = req.params.postid;
+    	if(post_id){
+    		npModelPost.deletePost(post_id,function(err,result){
+        		if(!err){
+        			console.log('Post deleted successfully');
+        			res.redirect('/posts/');
+        		}
+        	});
+    	}
+    	else{
+    		res.redirect('/posts/')
+    	}
+    	
+    },
+    /*
+     * info : delete post
+     * @param req request
+     * @param res response
+     */
+    add:function(req,res){
+    	res.render('post/add.ejs', 
+    	          { title: 'My Blog Page'
+    	            
+    	});
+    },
+    /*
+     * info : save post
+     * @param req request
+     * @param res response
+     */
+    addpost:function(req,res){
+    	var data = {
+    		category_id:req.body.category,
+    		title:req.body.title,
+    		content:req.body.content,
+    		posted_by:req.session.adminuser.id
+    	};
+    	util.log(data);
+    	npModelPost.addpost(data,function(err,result){
+    		if(!err){
+    			console.log('Post save successfully');
+    			res.redirect('/posts/');
+    		}
+    		else{console.log(err);}
+    	});
     }
+     
+     
     
     
 };

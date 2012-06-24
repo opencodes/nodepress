@@ -1,11 +1,26 @@
-  	<h3><a href='/blog/post/<%= blogcat.id%>'><%= blogcat.cat_name%></a></h3>
-  	<small>Created  on <b><%= dateFormat(blogcat.created_date )%></b></small>
-  	<hr>
-  	<p class='blog-post'><%- blogcat.description %></p>
-  		<% for(var index in blogpost) { %>
-  	<h3><a href="/blog/post/<%= blogpost[index].id%>"><%= blogpost[index].title%></a></h3>
-  	<small>Posted By : <b><%= blogpost[index].nickname%></b> on <b><%= dateFormat(blogpost[index].created_date )%></b>
-  	</small>
-  	<hr>
-  	<%- blogpost[index].content.substr(0,250)%>..<a  class="pull-right" href="/blog/post:<%= blogpost[index].id%>">read more</a>
-	<% } %>
+<div class="subnav">
+	<h2>Edit Cat</h2>
+	<hr>
+</div>
+
+<form class="well" method="post" id="edit_post" action="/category/save">
+	<div class="row">
+		<div class="error"></div>
+		<div class="leftdiv">
+			<h3>Category</h3>					
+		</div>
+		<div class="span9">
+			<div class='input'>
+				<input type="hidden" name='catid' value="<%= blogcat.id%>">
+				<input type="text " class="required largeinput" name='catname' value="<%= blogcat.cat_name%>">
+				<textarea type="text" class="span7 required " name='description'><%- blogcat.description %></textarea>
+			</div>
+			<div class="form-actions">
+				<button class="btn btn-primary" type="submit">Save changes</button>
+			</div>
+		</div>
+
+
+	</div>
+</form>
+<script src="/js/category/edit.js"></script>

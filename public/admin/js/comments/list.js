@@ -1,24 +1,24 @@
 var asInitVals = new Array();
 $(document).ready(function() {
-  var oTable = $('#datatable-post').dataTable( {
+  var oTable = $('#datatable-comments').dataTable( {
     "bProcessing": true,
-    "sAjaxSource": "/posts/all",
+    "sAjaxSource": "/comments/all",
     "bJQueryUI": true,
     "aoColumns": [
       { "mDataProp": function (id) {
         return '<input type=\"checkbox\" value="'+id.id +'">';} },
       { "mDataProp": "id" },
-      { "mDataProp": "title" },
-      { "mDataProp": "cat_name" },
-      { "mDataProp": "cat_name" },
-      { "mDataProp": "created_date" },
+      { "mDataProp": "comment" },
+      { "mDataProp": "post_id" },
+      { "mDataProp": "posted_by" },
+      { "mDataProp": "comment_date" },
       { "mDataProp": function (id) {
-        return '<a href=\"/posts/edit/'+id.id +'\" ><i class="icon-edit"></i></a> | <a href=\"/posts/delete/'+id.id +'\" ><i class="icon-remove"></i></a>';} }
+        return '<a href=\"/comments/delete/'+id.id +'\" ><i class="icon-remove"></i></a>';} }
       
     ],
     "bAutoWidth": false
     
-  } );  
+  } );   	 	 
   $(".searchfilter input").keyup( function () {
     /* Filter on the column (the index) of this element */
     oTable.fnFilter( this.value, $(".searchfilter input").index(this) );

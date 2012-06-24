@@ -1,0 +1,20 @@
+<div class="subnav">
+    <h2>Migration From Wordpress Result</h2>
+    <hr>
+</div>
+<div class="row">
+<h2><small >Imported Category</small></h2>
+<ol >
+<% for(var c in imports.category){%>
+<li><%=imports.category[c]%></li>
+<%}%>
+</ol>
+<h2><small >Imported Posts</small></h2>
+<ol >
+<% for(var p in imports.post){%>
+<li><%=imports.post[p]%></li>
+<%}%>
+</ol>
+<h2><small >No of Imported Comments : </small><%=imports.comment%></h2>
+
+</div>
