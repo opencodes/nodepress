@@ -86,15 +86,14 @@ var post = {
      * @param res response
      */
     save:function(req,res){
-    	
+    	var postid = (req.body.post_id)?req.body.post_id:null;
     	var data = {
     		category_id:req.body.category,
-    		id:req.body.post_id,
+    		id:postid,
     		title:req.body.title,
     		content:req.body.content,
     		posted_by:req.session.adminuser.id
     	};
-    	console.log(data);
     	npModelPost.save(data,function(err,result){
     		if(!err){
     			console.log('Post save successfully');
@@ -110,7 +109,7 @@ var post = {
     deletepost:function(req,res){    	
     	var post_id = req.params.postid;
     	if(post_id){
-    		npModelPost.deletePost(id,function(err,result){
+    		npModelPost.deletePost(post_id,function(err,result){
         		if(!err){
         			console.log('Post deleted successfully');
         			res.redirect('/posts/');
@@ -121,6 +120,38 @@ var post = {
     		res.redirect('/posts/')
     	}
     	
+    },
+    /*
+     * info : delete post
+     * @param req request
+     * @param res response
+     */
+    add:function(req,res){
+    	res.render('post/add.ejs', 
+    	          { title: 'My Blog Page'
+    	            
+    	});
+    },
+    /*
+     * info : save post
+     * @param req request
+     * @param res response
+     */
+    addpost:function(req,res){
+    	var data = {
+    		category_id:req.body.category,
+    		title:req.body.title,
+    		content:req.body.content,
+    		posted_by:req.session.adminuser.id
+    	};
+    	util.log(data);
+    	npModelPost.addpost(data,function(err,result){
+    		if(!err){
+    			console.log('Post save successfully');
+    			res.redirect('/posts/');
+    		}
+    		else{console.log(err);}
+    	});
     }
      
      

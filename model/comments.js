@@ -1,37 +1,19 @@
 var table = 'comment';
 var Db = require('./model.js');
 var util = require('util');
+var Query = require('./sql');
 
 var comment = {
-    comment_by_id:function(ids,limit,callback){
-    var req_id;
-    var sub_query = '';
-      if(ids && !util.isArray(ids)){
-        if(util.isArray(ids)){
-          req_id = ids.join();
-          sub_query = 'where id IN('+req_id+')';
-        }
-        else{
-          sub_query = 'where id ='+ ids;
-        }
-      }
-      
-      var sql = 'SELECT * FROM '+ table +' '+ sub_query +' ORDER BY comment_date';
-      if(Number(limit)){
-        sql += " LIMIT "+limit;
-      }
-      //console.log("Query:"+sql);
-      Db.query(
-          sql,
-          function selectCb(err, results) {
-            if (!err) {
-              return callback(results, null); 
-            }
-            else{
-              return callback(null, err); 
-            }            
-           }
-       ); 
+    comment_by_id:function(ids,callback){
+    var filter = {'id':ids};
+	    Query.select(filter,table,function(err,result){
+			if(!err){
+				callback(null,result);
+			}else{
+				console.log(err);
+				callback(null,err);
+			}
+		});
       },
       comment_by_postid:function(ids,callback){
         var req_id;
@@ -46,7 +28,6 @@ var comment = {
             }
           }
           var sql = 'SELECT * FROM '+ table +' '+ sub_query;
-          //console.log("Query:"+sql);
           Db.query(
               sql,
               function selectCb(err, results) {
@@ -58,7 +39,7 @@ var comment = {
                 }            
                }
            ); 
-          },
+      },
       save:function(data,callback){
         var subquery = 'SET ';
         var values = [];
@@ -68,7 +49,7 @@ var comment = {
             if(index!='id')
             values.push(index +"='"+data[index]+"' ");
           }
-          subquery += values.join(',')
+          subquery += values.join(',');
           if(data.id && data.id!=''){
             subquery+=" where id='"+Number(data.id)+"'";
           }          
@@ -86,6 +67,16 @@ var comment = {
               }            
              }
          ); 
+      },
+      deleteComment:function(id,callback){
+      	Query.remove(id,table,function(err,result){
+    		if(!err){
+    			callback(null,result);
+    		}else{
+    			console.log(err);
+    			callback(null,err);
+    		}
+    	});
       }
       
    

@@ -1,0 +1,33 @@
+
+<div class="subnav">
+	<h2>Add Post</h2>
+	<hr>
+</div>
+
+<form class="well" method="post" id="edit_post" action="/posts/add">
+	<div class="row">
+		<div class="error"></div>
+		<div class="leftdiv">
+			<h3>Category</h3>
+			<div class="controls" id="post_category">
+				
+			</div>
+			<p class="help-block">
+					<strong>Note:</strong> Select categories to bind with post.
+			</p>
+		</div>
+		<div class="span9">
+			<div class='input'>
+				<input type="hidden" name='post_id' value="">
+				<input type="text " class="required largeinput" name='title' value="">
+				<textarea type="text" class="span7 required ckeditor" name='content'></textarea>
+			</div>
+			<div class="form-actions">
+				<button class="btn btn-primary" type="submit">Save changes</button>
+			</div>
+		</div>
+
+
+	</div>
+</form>
+<script src="/js/posts/edit.js"></script>

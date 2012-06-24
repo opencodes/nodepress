@@ -1,6 +1,7 @@
 var table = 'user';
 var Db = require('./model.js');
 var util = require('util');
+var Query = require('./sql');
 
 
 var User = {
@@ -88,6 +89,27 @@ var User = {
               }            
              }
          ); 
+      },
+      all:function(filters,callback){
+    	  Query.select(null,table,function(err,result){
+    		  if(!err){
+    			  callback(null,result);
+    		  }else{
+    			  callback(err,null);
+    		  }
+    		  
+    	  })
+      },
+      userbyid:function(id,callback){
+    	  var filters = {'id':id};
+    	  Query.select(filters,table,function(err,result){
+    		  if(!err){
+    			  callback(null,result);
+    		  }else{
+    			  callback(err,null);
+    		  }
+    		  
+    	  })
       }
       
    

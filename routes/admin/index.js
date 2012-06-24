@@ -15,6 +15,9 @@ module.exports = function (app) {
   app.post('/login/',main.login);
   require('./posts')(app);  
   require('./category')(app);  
+  require('./comments')(app); 
+  require('./users')(app); 
+  require('./tools')(app); 
 
 };
 

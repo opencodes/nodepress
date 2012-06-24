@@ -1,5 +1,49 @@
-  <h1>Categories </h1>
-  <hr>
-	<% for(var index in blogcat) { %>
-  	<h3><a href="/blog/cat/<%= blogcat[index].id%>"><%= blogcat[index].cat_name%></a></h3><small><b><%= dateFormat(blogcat[index].created_date )%></b></small>
-	<% } %>
+<div class="subnav">
+    <h2>Category</h2>
+    <hr>
+</div>
+<div class="row">
+	<div class="span1"><a href="/category/add" >New Category</a></div>
+</div>
+<div style="margin-top: 1em;" class="full_width">
+<div role="grid" class="dataTables_wrapper" id="example_wrapper">
+	<table cellpadding="0" cellspacing="0" border="0" class="display dataTable" id="datatable-cat">
+	<thead id="colls">
+		<tr>
+			<th width="20px;"><input type="checkbox" ></th>
+			<th >ID</th>
+			<th width="250px;">Category</th>
+			<th >Description</th>
+			<th >Created Date</th>
+			<th width="60px;">Action  </th>
+		</tr>
+	</thead>
+	<thead class="searchfilter">	
+		<tr >
+        <th class="ui-state-default">
+            <input type="hidden" id="id3"  class="search_init input-medium " />
+        </th>
+        <th class="ui-state-default">
+            <input type="text" id="id2" name="id" class="search_init input-medium " />
+        </th>
+        <th class="ui-state-default">
+            <input type="text" id="id3" name="cat_name" class="search_init input-medium " />
+        </th>
+        <th class="ui-state-default">
+            <input type="text" id="id3" name="description" class="search_init input-medium " />
+        </th>
+        <th class="ui-state-default">
+            <input type="text" id="id3" name="created_date" class="search_init input-medium " />
+        </th>
+        <th class="ui-state-default">
+           
+        </th>
+    </tr>
+	</thead>
+	<tbody>		
+	</tbody>
+</table>
+</div>
+</div>
+<script src="/js/category/list.js"></script>
+  

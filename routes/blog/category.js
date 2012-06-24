@@ -11,7 +11,7 @@ var category = {
       }        
       category.info(req, res, next,cat_id);
     },
-    /*
+    /**
      * info : Retrieve all the category.
      * @param req
      * @param res
@@ -48,7 +48,7 @@ var category = {
         }
       });
     },
-    /*
+    /**
      * info : Render all cat.
      * @param req
      * @param res
@@ -63,15 +63,16 @@ var category = {
         recentposts:req.recentposts,
         recentcomments:req.recentcomments});
     },
-    /*
+    /**
      * info : Render all cat.
      * @param req
      * @param res
      * @param next
      */
     render_view:function(req, res){
+      
       var blogcat = req.blogcat[0];
-      //util.log(util.inspect(req.blogpost));
+      util.log(util.inspect(req.blogpost));
       console.log('Render cat Id '+req.blogcat[0].id);
       res.render('blog/category/view.ejs', { 
         title: 'My Blog Page',
@@ -81,7 +82,7 @@ var category = {
         recentposts:req.recentposts,
         recentcomments:req.recentcomments});
     },
-    /*
+    /**
      * info : send json of all cat.
      * @param req
      * @param res

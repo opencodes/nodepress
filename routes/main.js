@@ -9,7 +9,7 @@ var main = {
      * Fetch Categories
      */
     cats:function(req,res,next){
-      category.cat_by_id(null,function(cats,err){
+      category.cat_by_id(null,function(err,cats){
         if(!err){
           req.cats =  cats;        
         }
@@ -44,11 +44,11 @@ var main = {
       });
     },
     recentcomment:function(req,res,next){
-      Comments.comment_by_id(null,5,function(comments,err){
+      Comments.comment_by_id(null,function(err,comments){
         //console.log(comments);
         if(!err){
           req.recentcomments = {};
-          //util.log(util.inspect(posts));
+          util.log(util.inspect(comments));
           for(var index in comments){
             var comment_id = comments[index].id;            
             req.recentcomments[comment_id] = comments[index];
@@ -60,7 +60,7 @@ var main = {
           next();
         }
       });
-    },
+    }
 };
 
 module.exports = main;

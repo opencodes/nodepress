@@ -2,7 +2,13 @@
 var Comments = require('../../../model/comments'); 
 var util = require('util');
 
-var comment = {
+var comment = {	
+	/*
+     * info : Retrieve all the comment.
+     * @param req
+     * @param res
+     * @param next
+     */
     param: function (req, res, next) {
       var comment_id = null;
       if(req.params.commentid){
@@ -22,12 +28,10 @@ var comment = {
       Comments.comment_by_id(ids,null,function(comments,err){
         if(!err){
           req.blogcomment = {};
-          //util.log(util.inspect(comments));
           for(var index in comments){
             var comment_id = comments[index].id;            
             req.comment[comment_id] = comments[index];
           }
-          //util.log(util.inspect(req.comment));
           next();
         }
         else{
@@ -43,21 +47,19 @@ var comment = {
      * @param next
      */
     render_all:function(req, res){
-      //util.log(util.inspect(req.blogcomment));
       res.render('comment/list.ejs', 
-          { title: 'My Blog Page',
+          { title: 'My Blog Page'
            });
     },
     save:function(req,res){
       var body =req.body;
-      //console.log(req.body);
       var data = {id:null,
                   name:body.name,
                   email:body.email,
                   website:body.website,
                   comment:body.comment,
                   post_id:body.post_id,
-                  posted_by:body.posted_by
+                  posted_by:body.postedids_by
                   };
       Comments.save(data,function(result,err){
         if(!err){
@@ -69,7 +71,6 @@ var comment = {
     bypost:function(req,res,next){
       var post_id = req.postid;
       Comments.comment_by_postid(post_id,function(comments,err){
-        //console.log(comments);
         if(!err){
           req.blogpost[post_id].comment = comments;
           next();
@@ -86,20 +87,36 @@ var comment = {
      * @param res response
      */
     json_data:function(req,res){
-      Comments.comment_by_id(null,null,function(comments,err){
+      Comments.comment_by_id(null,function(comments,err){
         if(!err){
-          //util.log(util.inspect(comments));
-
           var commentsjson = {
               "sEcho": 1,
               "iTotalRecords": comments.length,
               "iTotalDisplayRecords": "25",
               "aaData": comments
-            }
+            };
           res.json(commentsjson);
         }
-      })
+      });
+    },
+    /*
+     * info : delete
+     * @param req request
+     * @param res response
+     */
+    del:function(req,res){
+    	var id = (req.params.commentid)?req.params.commentid:null;
+    	Comments.deleteComment(id,function(err,result){
+    		if(!err){
+    			console.log('comment deleted successfully');
+    			res.redirect('/comments/');
+    		}
+    		else{
+    			console.log(err);
+    			res.redirect('/comments/');
+    		}
+    	});
     }
     
-}
+};
 module.exports = comment;
