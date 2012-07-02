@@ -19,7 +19,7 @@ var post = {
      */
     info:function(req, res,next,post_id){
       var ids = post_id;
-      npModelPost.post_by_id(ids,null,function(posts,err){
+      npModelPost.post_by_id(ids,null,function(err,posts){
         if(!err){
           req.blogpost = {};
           //util.log(util.inspect(posts));

@@ -34,7 +34,7 @@ var tool = {
 				var fileinfo = req.files.wpxml;
 				xmlreader.readFile(fileinfo.path,function(err,result){
 					if(!err){
-						//util.log(util.inspect(result.channel.item));
+					util.log(util.inspect(result.channel.item));
 						req.items = result.channel.item;
 						next();
 					}else{
@@ -145,9 +145,11 @@ var tool = {
 		 */
 		insertpost:function(req,res,next){
 			var categories = {};
-			for(var i=0;i<req.category.length;i++ ){
-				categories[req.category[i]['cat_name']] = req.category[i];
-			}
+			if(req.category){
+				for(var i=0;i<req.category.length;i++ ){
+					categories[req.category[i]['cat_name']] = req.category[i];
+				}
+			}			
 			var count = req.items.length;
 			var comments = 0;
 			req.items.forEach(function (item) {

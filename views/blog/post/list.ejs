@@ -1,5 +1,32 @@
 	<% for(var index in blogpost) { %>
-  	<h3><a href="/blog/post/<%= blogpost[index].id%>"><%= blogpost[index].title%></a></h3><small>Posted By : <b><%= blogpost[index].nickname%></b> on <b><%= dateFormat(blogpost[index].created_date )%></b></small>
-  	<hr>
-  	<%- blogpost[index].content.substr(0,250)%>..<a  class="pull-right" href="/blog/post:<%= blogpost[index].id%>">read more</a>
+	<h2 class="entry-heading"><a rel="bookmark" title="Permalink to Tennis Cup 2012" href="/blog/post/<%= blogpost[index].id%>">
+	<%= blogpost[index].title%></a></h2>
+	<hr>
+	<div class="row">
+    <div class="thumbnail span4">
+    	<div class="entry-thumb-img">
+		  <a href="/blog/post/<%= blogpost[index].id%>">
+		  <img alt="" src="http://placehold.it/350x150" width="100%" height="150px"/></a>
+		</div>
+	</div>
+	<div class="info-box span3">
+              <a rel="prettySociable" href="#"><img src="http://preview.ait-themes.com/guesthouse/ws/wp-content/themes/guesthouse/design/img/share.png" class="share" style="cursor: move; position: absolute; z-index: 1005;"></a>
+              <div class="info-box-inside">
+                <h3><cufon class="cufon cufon-canvas" alt="8 " style="width: 15px; height: 18px;"><canvas width="36" height="21" style="width: 36px; height: 21px; top: -1px; left: -1px;"></canvas><cufontext>8 </cufontext></cufon><cufon class="cufon cufon-canvas" alt="Nov" style="width: 39px; height: 18px;"><canvas width="52" height="21" style="width: 52px; height: 21px; top: -1px; left: -1px;"></canvas><cufontext>Nov</cufontext></cufon></h3>
+                <small>posted by <a rel="author" title="View all posts by admin" href="http://preview.ait-themes.com/guesthouse/ws/author/admin/" class="url fn n"><%= blogpost[index].nickname%></a></small>
+                <br><br>
+                <span><b>Categories: </b><a rel="category tag" title="View all posts in Sport" href="http://preview.ait-themes.com/guesthouse/ws/category/sport/">Sport</a>, <a rel="category tag" title="View all posts in Tennis" href="http://preview.ait-themes.com/guesthouse/ws/category/tennis/">Tennis</a></span>
+                <br><br>
+                <span><b>Date: </b><a rel="tag" href="http://preview.ait-themes.com/guesthouse/ws/tag/sport/"><%= dateFormat(blogpost[index].created_date )%></a>, <a rel="tag" href="http://preview.ait-themes.com/guesthouse/ws/tag/tennis/">Tennis</a></span>
+                <br><br>
+                <span><b>Comments: </b>4</span>
+    		 </div>
+    </div>
+	</div>
+	<div class="entry-content">
+	<p><%- blogpost[index].content.substr(0,250)%>..</p>
+	<br>
+		<p> <a class="more-link pull-right" href="/blog/post:<%= blogpost[index].id%>">(more…)</a></p>
+
+	</div>
 	<% } %>

@@ -67,7 +67,7 @@ var post = {
      * @param res response
      */
     json_data:function(req,res){
-      npModelPost.post_by_id(null,null,function(posts,err){
+      npModelPost.post_by_id(null,null,function(err,posts){
         if(!err){
           //util.log(util.inspect(posts));          
           var postjson = {

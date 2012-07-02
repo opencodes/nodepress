@@ -31,13 +31,20 @@
 
   <!-- Navbar
     ================================================== -->
-    <%- partial('topbar') %>      
-    <div class="container ">
+    <div class="container body-part ">
       <!-- Masthead
       ================================================== -->
       <header id="overview" class="jumbotron subhead">
       <!-- Carousel nav -->
-      <h1>Nodepress</h1>
+      <h1>Nodepress <small>A Blogging application.</small></h1>
+      
+        <div class="subnav">
+          <ul class="nav nav-pills">
+            <li class="active"><a href="/">Home</a></li>
+            <li class=""><a href="/blog">Post</a></li>  
+            <li class=""><a href="/user/register/">Register</a></li>          
+          </ul>
+        </div>
 				     <div id="myCarousel" class="carousel">
 				    <!-- Carousel items -->
 				
@@ -63,12 +70,7 @@
                 </div>
               </div>			    
 				    </div>
-        <div class="subnav">
-          <ul class="nav nav-pills">
-            <li class="active"><a href="/">Home</a></li>
-            <li class=""><a href="/blog">Post</a></li>           
-          </ul>
-        </div>
+
       </header>
       <div class="row">
     <div class="span7">
@@ -78,10 +80,7 @@
       <%- partial('sidebar') %>     
     </div>
   </div>
-
-
-</div><!-- /container -->
-<!-- Footer
+  <!-- Footer
  ================================================== -->
 <footer class="footer">
 <div class="container" style="min-height: 150px;">
@@ -120,6 +119,9 @@ Copyright &copy; 2012 . All Rights Reserved.
 </div>
 </div>
 </footer>
+
+</div><!-- /container -->
+
 
     <!-- Le javascript
     ================================================== -->
