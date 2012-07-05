@@ -25,7 +25,7 @@ var Query = {
 			if(subquery.length>=1){
 				sql+=" WHERE " + subquery.join(' and ')+";";
 			}
-			console.log(sql);
+			//console.log(sql);
         	if(sql!=''){
         		Query.processquery(sql,callback);        		
         	}
@@ -98,6 +98,7 @@ var Query = {
 		 * @param sql 
 		 */
 		processquery:function(sql,callback){
+			util.log("SQL : [ "+ sql+" ]");
 			Db.query(
               sql,
               function selectCb(err, results) {

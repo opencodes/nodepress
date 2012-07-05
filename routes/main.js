@@ -9,7 +9,7 @@ var main = {
      * Fetch Categories
      */
     cats:function(req,res,next){
-      category.cat_by_id(null,function(err,cats){
+      category.cat_all(function(err,cats){
         if(!err){
           req.cats =  cats;        
         }
@@ -26,7 +26,7 @@ var main = {
      * @param next
      */
     recentpost:function(req,res,next){
-      Blogpost.post_by_id(null,5,function(posts,err){
+      Blogpost.post_by_id(null,5,function(err,posts){
         if(!err){
           req.recentposts = {};
           //util.log(util.inspect(posts));
@@ -48,7 +48,7 @@ var main = {
         //console.log(comments);
         if(!err){
           req.recentcomments = {};
-          util.log(util.inspect(comments));
+          //util.log(util.inspect(comments));
           for(var index in comments){
             var comment_id = comments[index].id;            
             req.recentcomments[comment_id] = comments[index];

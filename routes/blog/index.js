@@ -12,6 +12,6 @@ module.exports = function(app) {
     app.get('/blog/post/:postid', post.param,main.cats,main.recentpost,main.recentcomment,comment.bypost,post.render_view);
     app.post('/blog/post/',comment.save);
     //Category Routes
-    app.get('/blog/cat',cat.param,main.cats,main.recentpost,main.recentcomment,cat.render_all);
+    app.get('/blog/cat',main.cats,main.recentpost,main.recentcomment,cat.param,cat.posts,cat.render_all);
     app.get('/blog/cat/:catid',cat.param,main.cats,main.recentpost,main.recentcomment,cat.posts,cat.render_view);   
 };

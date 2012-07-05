@@ -19,7 +19,7 @@ var category = {
      */
     info:function(req, res,next,cat_id){
       var ids = cat_id;
-      Blogcat.cat_by_id(ids,function(cats,err){
+      Blogcat.cat_by_id(ids,function(err,cats){
         if(!err){
           req.blogcat = cats;
           next();
@@ -72,7 +72,7 @@ var category = {
     render_view:function(req, res){
       
       var blogcat = req.blogcat[0];
-      util.log(util.inspect(req.blogpost));
+      //util.log(util.inspect(req.blogpost));
       console.log('Render cat Id '+req.blogcat[0].id);
       res.render('blog/category/view.ejs', { 
         title: 'My Blog Page',

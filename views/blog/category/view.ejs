@@ -2,7 +2,7 @@
   	<small>Created  on <b><%= dateFormat(blogcat.created_date )%></b></small>
   	<hr>
   	<p class='blog-post'><%- blogcat.description %></p>
-  		<% for(var index in blogpost) { %>
+  	<% for(var index in blogpost) { %>
   	<h3><a href="/blog/post/<%= blogpost[index].id%>"><%= blogpost[index].title%></a></h3>
   	<small>Posted By : <b><%= blogpost[index].nickname%></b> on <b><%= dateFormat(blogpost[index].created_date )%></b>
   	</small>
