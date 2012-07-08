@@ -187,13 +187,29 @@ body {
 /* Footer
 -------------------------------------------------- */
 .footer {
- background-color: #041B2B;
- border-top: 5px solid #000000;
+ background-color: #A05D0D;
+ border-top: 3px solid #77450A;
 }
 .footer p {
   margin-bottom: 0;
-  color: #555;
+  color: #AAAAAA;
 }
-
+.footer-bottom{height:35px;background-color:#000;border-top: 2px solid #E98813;width:100%;margin:auto;color: #CCCCCC;
+    font-family: inherit;
+    font-size: 9px;}
 .entry-heading{ padding-left:5px;}
 .entry-content{padding-left:5px;}
+.bottom-liner {
+    background: url("/img/line.gif") repeat-x scroll center bottom transparent;
+}
+footer h3 {border-bottom:1px solid #E98813;}
+.post_meta {
+    color: #AAAAAA;
+    font-family: Tahoma,Geneva,Arial,sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    padding: 4px 1px 8px;
+    height:20px;
+}
+.post_meta a{color: #E98813;}
