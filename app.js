@@ -14,6 +14,6 @@ app.configure(function(){
 });
 
 require('./routes')(app);
-console.log("Server listening on port " + config.port+" url : http://127.0.0.1:"+config.port );
+console.log("Server listening on port " + config.port+" url : "+config.host+":"+config.port );
 
 app.listen(config.port);
