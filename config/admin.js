@@ -1,5 +1,5 @@
 var config = {
-  port: 1984,
+  port: 1987,
   host: 'http://localhost',
   db_options: {
     host: 'localhost',
