@@ -153,9 +153,6 @@ var post = {
     		else{console.log(err);}
     	});
     }
-     
-     
-    
     
 };
 module.exports = post;

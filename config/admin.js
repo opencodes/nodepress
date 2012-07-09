@@ -1,6 +1,6 @@
 var config = {
-  port: 1987,
-  cdn: 'http://localhost:3000',
+  port: 1984,
+  host: 'http://localhost',
   db_options: {
     host: 'localhost',
     port: 3306,

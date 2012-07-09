@@ -17,6 +17,6 @@ app.configure(function(){
 
 app.use(main.auth);
 require('./routes/admin')(app);
-console.log("Server listening on port " + config.port );
+console.log("Server listening on port " + config.port+" url : "+config.host+":"+config.port );
 
 app.listen(config.port);
