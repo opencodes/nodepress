@@ -9,13 +9,10 @@
 	        return '<input type=\"checkbox\" value="'+id.id +'">';} },
 	      { "mDataProp": "id" },
 	      { "mDataProp": "email_id" },
-	      { "mDataProp": "first_name" },
-	      { "mDataProp": "last_name" },
-	      { "mDataProp": "nickname" },
+	      { "mDataProp": "first_name" },	   
 	      { "mDataProp": "user_type" },
-	      { "mDataProp": "created_date" },
-	      { "mDataProp": function (id) {
-	        return '<a href=\"/users/edit/'+id.id +'\" ><i class="icon-edit"></i></a> | <a href=\"/users/delete/'+id.id +'\" ><i class="icon-remove"></i></a>';} }
+	      { "mDataProp": "created_date" }
+	      
 	      
 	    ],
 	    "bAutoWidth": false
